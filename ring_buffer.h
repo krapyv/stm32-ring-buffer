@@ -7,8 +7,8 @@
 typedef struct
 {
     uint8_t *buffer;
-    uint32_t head;
-    uint32_t tail;
+    volatile uint32_t head;
+    volatile uint32_t tail;
     uint32_t max_size;
 } RingBuffer_t;
 

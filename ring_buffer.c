@@ -19,6 +19,8 @@ bool ring_buffer_init(RingBuffer_t *rb, uint8_t *storage_array, uint32_t size)
 
     return true;
 }
+
+// TODO: fix possible future violation - if the second writer would exist, add the runtime enforcement on the context (from_isr, from_main) to prevent race conditions
 bool ring_buffer_push(RingBuffer_t *rb, uint8_t byte)
 {
     // check if the buffer is full (no slots to push into)
