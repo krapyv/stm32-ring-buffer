@@ -17,5 +17,6 @@ bool ring_buffer_push(RingBuffer_t *rb, uint8_t byte);
 bool ring_buffer_pop(RingBuffer_t *rb, uint8_t *byte);
 bool ring_buffer_is_empty(RingBuffer_t *rb);
 bool ring_buffer_is_full(RingBuffer_t *rb);
+uint32_t ring_buffer_free_space(const RingBuffer_t *rb);
 
 #endif

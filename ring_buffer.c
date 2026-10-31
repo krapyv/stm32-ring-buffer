@@ -40,6 +40,8 @@ bool ring_buffer_push(RingBuffer_t *rb, uint8_t byte)
     // since the head points to the first empty slot in the array, the new byte are inserted into this position and the head moves to the next empty slot
     rb->buffer[rb->head] = byte; // rb->buffer is a pointer (point to the first element of the array)
 
+    __COMPILER_BARRIER();
+
     // next we should check whether the head are wrapping around to the beginning
     // if head is at the last index, it is going to have the position of 0
     // if it is not yet at the verge of the array, it will have its next index
@@ -58,6 +60,8 @@ bool ring_buffer_pop(RingBuffer_t *rb, uint8_t *byte)
     }
     // since the tail is pointing to the first unread element in the array, we can just get this element by accessing the element with index of tail
     *byte = rb->buffer[rb->tail];
+
+    __COMPILER_BARRIER();
 
     // we need to check whether the tail is wrapping around to the beginning
     // if it is not yet at the verge of the array, it will have its next index; otherwise - index 0
