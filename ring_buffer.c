@@ -1,6 +1,13 @@
 #include <stdbool.h>
 #include "ring_buffer.h"
 
+uint32_t ring_buffer_free_space(const RingBuffer_t *rb)
+{
+    uint32_t mask = rb->max_size - 1;
+    uint32_t used = (rb->head - rb->tail) & mask;
+    return mask - used;
+}
+
 bool ring_buffer_init(RingBuffer_t *rb, uint8_t *storage_array, uint32_t size)
 {
     // the non-negotiable condition: size must be an exact power of two (4, 8, 16 ...)
