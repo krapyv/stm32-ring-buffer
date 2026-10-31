@@ -1,5 +1,6 @@
 #include <stdbool.h>
 #include "ring_buffer.h"
+#include "core/core_cm4.h"
 
 uint32_t ring_buffer_free_space(const RingBuffer_t *rb)
 {
